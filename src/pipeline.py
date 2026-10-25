@@ -68,10 +68,9 @@ def build_kit(
         summary=summary,
         flashcards=[card for output in outputs for card in output.flashcards],
         quiz=[question for output in outputs for question in output.quiz],
+        chunks=chunks,
     )
     selected_tts = tts_provider or settings.tts_provider
-    if tts and selected_tts == "none":
-        raise ValueError("A TTS adapter was supplied while TTS_PROVIDER is disabled")
     if selected_tts not in {"", "none", "off", "disabled"}:
         voice = tts or (ElevenLabsTTS() if selected_tts == "elevenlabs" else PiperTTS())
         audio_path = settings.data_dir / "audio" / f"{kit.id}.wav"

@@ -35,3 +35,4 @@ class Kit(BaseModel):
     flashcards: list[Flashcard]
     quiz: list[QuizQuestion]
     audio_path: str | None = None
+    chunks: list[str] = Field(default_factory=list)

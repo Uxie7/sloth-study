@@ -18,8 +18,8 @@ export default function KitPage({ params }) {
   return <main className="view"><Link href="/library" className="note">← Your kits</Link><h1>{kit.title}</h1>
     <div className="tabs" role="tablist">{tabs.map((name) => <button className="tab" role="tab" aria-selected={tab === name} key={name} onClick={() => setTab(name)}>{name === "cards" ? "Flashcards" : name === "audio" ? "Audio brief" : name[0].toUpperCase() + name.slice(1)}</button>)}</div>
     {tab === "summary" && <div className="panel on"><ul className="sum">{kit.summary.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul></div>}
-    {tab === "cards" && <div className="panel on">{kit.flashcards.length ? <FlashCard cards={kit.flashcards} /> : <p className="note">No flashcards generated.</p>}</div>}
-    {tab === "quiz" && <div className="panel on"><Quiz questions={kit.quiz} /></div>}
+    {tab === "cards" && <div className="panel on">{kit.flashcards.length ? <FlashCard cards={kit.flashcards} chunks={kit.chunks || []} /> : <p className="note">No flashcards generated.</p>}</div>}
+    {tab === "quiz" && <div className="panel on"><Quiz questions={kit.quiz} chunks={kit.chunks || []} /></div>}
     {tab === "audio" && <div className="panel on"><AudioPlayer kitId={kit.id} script={kit.summary.brief_script} /></div>}
   </main>;
 }
