@@ -1,0 +1,10 @@
+openai
+pymupdf
+pydantic>=2
+python-dotenv
+fastapi
+uvicorn
+piper-tts
+sentry-sdk
+tiktoken
+pytest
